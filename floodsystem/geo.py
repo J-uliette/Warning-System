@@ -7,3 +7,12 @@ geographical data.
 """
 
 from .utils import sorted_by_key  # noqa
+from haversine import haversine, Unit
+
+def stations_within_radius(stations, centre, r):
+
+    within_radius = []
+    
+    for station in stations:
+        distance = haversine(x, station.coord)
+        if distance <= r

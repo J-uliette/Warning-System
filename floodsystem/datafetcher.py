@@ -13,6 +13,8 @@ import os
 import dateutil.parser
 import requests
 
+import haversine
+
 
 def fetch(url):
     """Fetch data from url and return fetched JSON object"""
