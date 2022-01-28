@@ -13,7 +13,6 @@ import os
 import dateutil.parser
 import requests
 
-import haversine
 
 
 def fetch(url):

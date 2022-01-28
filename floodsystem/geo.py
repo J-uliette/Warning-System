@@ -5,8 +5,8 @@
 geographical data.
 
 """
-
-from .utils import sorted_by_key  # noqa
+from . import utils
+'''from .utils import sorted_by_key  # noqa'''
  #'ImportError: attempted relative import with no known parent package' as an error
 
 from haversine import haversine, Unit
@@ -21,3 +21,14 @@ def stations_within_radius(stations, centre, r):
             within_radius.append(station)
     
     return within_radius
+
+def rivers_with_station(stations):
+    '''returns a set of rivers with stations
+    {'Ganges', 'Nile', 'Amazon'} etc'''
+
+    
+    rivers = set() #empty set to put rivers with stations into
+    for station in stations:
+         rivers.add(station.river)
+
+    return rivers
