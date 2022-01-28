@@ -14,7 +14,7 @@ def stations_within_radius(stations, centre, r):
     within_radius = []
     
     for station in stations:
-        distance = haversine(x, station.coord)
+        distance = haversine(centre, station.coord)
         if distance <= r:
             within_radius.append(station)
     
