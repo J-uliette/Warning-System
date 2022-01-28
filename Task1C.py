@@ -9,4 +9,4 @@ station_list = build_station_list()
 
 within_radius = stations_within_radius(station_list, centre_coord, radius_km)
 
-print (sorted_by_key(within_radius, 0))
+print (within_radius)
