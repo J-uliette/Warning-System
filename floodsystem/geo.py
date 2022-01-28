@@ -5,13 +5,13 @@
 geographical data.
 
 """
-from . import utils
-'''from .utils import sorted_by_key  # noqa'''
+'''from . import utils'''
+from .utils import sorted_by_key  # noqa'''
  #'ImportError: attempted relative import with no known parent package' as an error
 
 from haversine import haversine, Unit
 
-def stations_by_distance(stations, p):
+def stations_by_distance(stations, p): #1B
         distance = []
         names = []
         towns = []
@@ -25,7 +25,8 @@ def stations_by_distance(stations, p):
         finaldistancelist = list(zip(names, towns, distance))
         finaldistancelist.sort(key=lambda x:x[2])
         return finaldistancelist[:10], finaldistancelist[-10:]
-def stations_within_radius(stations, centre, r):
+
+def stations_within_radius(stations, centre, r): #1C
 
     within_radius = []
     
@@ -36,7 +37,7 @@ def stations_within_radius(stations, centre, r):
     
     return within_radius
 
-def rivers_with_station(stations):
+def rivers_with_station(stations): #1D
     '''returns a set of rivers with stations
     {'Ganges', 'Nile', 'Amazon'} etc'''
 
@@ -46,3 +47,10 @@ def rivers_with_station(stations):
          rivers.add(station.river)
 
     return rivers
+
+def stations_by_river(stations):
+    '''returns a dictionary that maps river names (the 'key') to a list of station objects on a given river'''
+    dictionary = {}
+    for station in stations:
+        list_stations_on_river = []
+        dictionary[station.river] = station.name
