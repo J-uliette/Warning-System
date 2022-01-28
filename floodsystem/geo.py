@@ -11,6 +11,20 @@ from . import utils
 
 from haversine import haversine, Unit
 
+def stations_by_distance(stations, p):
+        distance = []
+        names = []
+        towns = []
+        for item in stations:
+            dist = haversine(item.coord, p)
+            distance.append(dist)
+        for item in stations:
+            names.append(item.name)
+        for item in stations:
+            towns.append(item.town)
+        finaldistancelist = list(zip(names, towns, distance))
+        finaldistancelist.sort(key=lambda x:x[2])
+        return finaldistancelist[:10], finaldistancelist[-10:]
 def stations_within_radius(stations, centre, r):
 
     within_radius = []
