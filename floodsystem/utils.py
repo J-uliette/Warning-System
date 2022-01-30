@@ -29,7 +29,7 @@ def sorted_by_key(x, i, reverse=False):
     return sorted(x, key=key, reverse=reverse)
 
 def names_from_MonitoringStation(stations):
-  '''returns a sorted list of station names where the parameter stations
+  '''returns a sorted list of station names where the parameter (stations)
   is a list of MonitoringStation objects'''
 
   names = []
