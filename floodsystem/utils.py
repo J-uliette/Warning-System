@@ -12,12 +12,12 @@ def sorted_by_key(x, i, reverse=False):
 
     Sort on first entry of tuple:
 
-      > sorted_by_key([(1, 2), (5, 1]), 0)
+      > sorted_by_key([(1, 2), (5, 1)], 0)
       >>> [(1, 2), (5, 1)]
 
     Sort on second entry of tuple:
 
-      > sorted_by_key([(1, 2), (5, 1]), 1)
+      > sorted_by_key([(1, 2), (5, 1)], 1)
       >>> [(5, 1), (1, 2)]
 
     """
@@ -27,3 +27,14 @@ def sorted_by_key(x, i, reverse=False):
         return element[i]
 
     return sorted(x, key=key, reverse=reverse)
+
+def names_from_MonitoringStation(stations):
+  '''returns a sorted list of station names where the parameter stations
+  is a list of MonitoringStation objects'''
+
+  names = []
+
+  for station in stations:
+    names.append(station.name)
+  
+  return sorted(names)
