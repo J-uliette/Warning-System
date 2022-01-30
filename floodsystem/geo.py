@@ -5,7 +5,7 @@
 geographical data.
 
 """
-import utils  #below wasn't working so now need to do utils.function() 
+import utils  #below wasn't working so now need to do utils.functionName() 
 #from .utils import sorted_by_key
 from haversine import haversine, Unit
 
