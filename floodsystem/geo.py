@@ -35,7 +35,7 @@ def stations_within_radius(stations, centre, r): #1C
         if distance <= r:
             within_radius.append(station)
     
-    return sorted(within_radius)
+    return within_radius
 
 def rivers_with_station(stations): #1D
     '''returns a sorted set of rivers with stations
