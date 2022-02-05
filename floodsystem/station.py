@@ -7,6 +7,9 @@ for manipulating/modifying station data
 """
 
 
+from types import NoneType
+
+
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -43,10 +46,20 @@ class MonitoringStation:
         if self.typical_range == None:
             return False
         else:
-            return (self.typical_range[0] < self.typical_range[1])
+            return (self.typical_range[0] < self.typical_range[1]) #returns True if lowest level (index 0) is actually lower of the two
 
-    def relative_water_level(self):
-        self.typicalRangeHigh
+    def relative_water_level(self): 
+        '''Returns fraction from 0 to 1 of value. Does this by dividing the 
+        difference of the latest value and the typical lowest value, by the range.
+        If the typical range data is inconsistent, returns None '''
+
+        if self.typical_range_consistent() == False:
+            return None
+        #elif self.latest_level == None:
+            #return None
+        else:
+            return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
+
 
 def inconsistent_typical_range_stations(stations):
     '''returns a list (MonitoringStation objects) of 
