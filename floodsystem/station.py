@@ -45,6 +45,9 @@ class MonitoringStation:
         else:
             return (self.typical_range[0] < self.typical_range[1])
 
+    def relative_water_level(self):
+        self.typicalRangeHigh
+
 def inconsistent_typical_range_stations(stations):
     '''returns a list (MonitoringStation objects) of 
     stations with inconsistent typical range data'''
