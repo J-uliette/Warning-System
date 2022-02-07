@@ -6,8 +6,8 @@ for manipulating/modifying station data
 
 """
 
-
-from types import NoneType
+'''what does below do? NoneType() isn't a function in types.py'''
+#from types import NoneType 
 
 
 class MonitoringStation:
