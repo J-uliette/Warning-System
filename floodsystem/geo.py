@@ -66,3 +66,29 @@ def stations_by_river(stations):
         dictionary[str(rivers[i])] = stations_on_river #adds the station list 
     
     return dictionary
+
+def rivers_by_station_number(stations, N): #1E
+    "determines the N rivers with the greatest number of monitoring stations." 
+    "It should return a list of (river name, number of stations) tuples, sorted "
+    "by the number of stations. In the case that there are more rivers with the "
+    "same number of stations as the N th entry, include these rivers in the list. "
+    rivers = rivers_with_station(stations) #gets a list of rivers to find stations on
+    counter = 0 #set counter to zero
+    listrivernumber = [] #create empty list for river name and number of stations
+    for i in rivers: #interate for each river
+        for station in stations: #and for each river, interate for each station
+            if station.river == rivers[i]: #if river is the same as the selected river for that river iteration
+                counter += 1 #increase counter
+        tupleunit = (rivers[i], counter) #create tuple
+        listrivernumber.append(tupleunit) #append tuple
+        tupleunit () #empty tuple
+    listrivernumber.sort(key=lambda x:x[1]) #sort by second elemnt of tuple
+    endlist = []
+    endlist.append(listrivernumber[len(listrivernumber)-N:]) #append to list last N elements
+    for i in listrivernumber:#interate over all elements of lsit
+        if listrivernumber[-N] == listrivernumber[i]: #if that listriver number is the same as the smallest N
+            endlist.insert(listrivernumber[i]) #insert to list
+    endlist.pop(listrivernumber[-N]) #remove repetition
+    return endlist
+
+
