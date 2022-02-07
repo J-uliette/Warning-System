@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: MIT
 """Unit test for the stationdata module"""
 
+from floodsystem.datafetcher import fetch_station_data
 from floodsystem.stationdata import build_station_list, update_water_levels
 
 
@@ -28,3 +29,4 @@ def test_update_level():
             counter += 1
 
     assert counter > 0
+

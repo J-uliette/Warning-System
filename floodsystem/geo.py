@@ -5,8 +5,8 @@
 geographical data.
 
 """
-import utils  #below wasn't working so now need to do utils.functionName() 
-#from .utils import sorted_by_key
+
+from .utils import sorted_by_key # noqa
 from haversine import haversine, Unit
 
 def stations_by_distance(stations, p): #1B
