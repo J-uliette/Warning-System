@@ -8,6 +8,7 @@ geographical data.
 
 from .utils import sorted_by_key # noqa
 from haversine import haversine, Unit
+import plotly.express as px
 
 def stations_by_distance(stations, p): #1B
         distance = []
@@ -25,7 +26,7 @@ def stations_by_distance(stations, p): #1B
         return finaldistancelist[:10], finaldistancelist[-10:]
 
 def stations_within_radius(stations, centre, r): #1C
-    '''Returns a list (unsorted) of all stations within a radius
+    '''Returns a list (unsorted) of all stations (type MonitoringStation) within a radius
     r from a centre coordinate'''
 
     within_radius = []
@@ -39,7 +40,7 @@ def stations_within_radius(stations, centre, r): #1C
 
 def rivers_with_station(stations): #1D
     '''returns a sorted set of rivers with stations
-    {'Amazon', 'Euphrates', 'Ganges', 'Nile'} etc'''
+    eg {'Amazon', 'Euphrates', 'Ganges', 'Nile', 'Zambezi'}'''
 
     
     rivers = set() #empty set to put rivers with stations into
@@ -48,9 +49,9 @@ def rivers_with_station(stations): #1D
 
     return sorted(rivers)
 
-def stations_by_river(stations):
+def stations_by_river(stations): #1D
     """returns a dictionary that maps river names (the 'key') to a list of station objects on a given river
-    {'Cam':[Station1, Station2]} where StationX is the MonitoringStation class"""
+    {'River Cam':[Station1, Station2]} where StationX is the MonitoringStation class"""
 
     dictionary = {}
     rivers = rivers_with_station(stations) #gets a list of rivers to find stations on
@@ -92,3 +93,4 @@ def rivers_by_station_number(stations, N): #1E
     return endlist
 
 
+def stations_on_map(stations):
