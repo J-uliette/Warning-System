@@ -39,7 +39,7 @@ def stations_within_radius(stations, centre, r): #1C
 
 def rivers_with_station(stations): #1D
     '''returns a sorted set of rivers with stations
-    {'Ganges', 'Nile', 'Amazon'} etc'''
+    {'Amazon', 'Euphrates', 'Ganges', 'Nile'} etc'''
 
     
     rivers = set() #empty set to put rivers with stations into
