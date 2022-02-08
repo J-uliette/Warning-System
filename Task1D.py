@@ -15,5 +15,3 @@ print (str(len(rivers)) + ' rivers have at least one monitoring station. First 1
 print(nameGet(river_dict['River Aire']))
 print(nameGet(river_dict['River Cam']))
 print(nameGet(river_dict['River Thames']))
-
-print ('River Cam' in river_dict)
