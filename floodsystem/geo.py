@@ -93,4 +93,13 @@ def rivers_by_station_number(stations, N): #1E
     return endlist
 
 
-def stations_on_map(stations):
+def plot_stations(stations):
+
+    px.set_mapbox_access_token(open(".mapbox_token").read())
+
+    fig = px.scatter_mapbox(stations,
+                        lat=stations.coord[0],
+                        lon=stations.coord[1],
+                        hover_name=stations.name,
+                        zoom=1)
+    fig.show()
