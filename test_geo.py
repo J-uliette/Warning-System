@@ -1,5 +1,5 @@
 """Unit test for the geo module"""
-import types
+
 from floodsystem.stationdata import build_station_list
 import floodsystem.geo as geo
 

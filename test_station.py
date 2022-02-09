@@ -34,16 +34,16 @@ def test_typical_range_consistent():
     label = "some station"
     coord = (-2.0, 4.0)
     inconsistentRange = (2.3, -3.4445)
-    inconsistentRangeNone = None
+    NoneRange = None
     consistentRange = (-0.3, 4.7)
     river = "River X"
     town = "My Town"
     inconsistentStation =  MonitoringStation(s_id, m_id, label, coord, inconsistentRange, river, town)
-    inconsistentNoneStation =  MonitoringStation(s_id, m_id, label, coord, inconsistentRangeNone, river, town)
+    NoneStation =  MonitoringStation(s_id, m_id, label, coord, NoneRange, river, town)
     consistentStation =  MonitoringStation(s_id, m_id, label, coord, consistentRange, river, town)
     assert consistentStation.typical_range_consistent() == True
     assert inconsistentStation.typical_range_consistent() == False
-    assert inconsistentNoneStation.typical_range_consistent() == False
+    assert NoneStation.typical_range_consistent() == False
 
 def test_inconsistent_typical_range_stations():
     s_id = "test-s-id"
