@@ -8,7 +8,7 @@ geographical data.
 
 from .utils import sorted_by_key # noqa
 from haversine import haversine, Unit
-import plotly.express as px
+'''import plotly.express as px'''
 
 def stations_by_distance(stations, p): #1B
         distance = []
