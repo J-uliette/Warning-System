@@ -6,8 +6,8 @@ for manipulating/modifying station data
 
 """
 
-
-from types import NoneType
+'''what does below do? NoneType() isn't a function in types.py'''
+#from types import NoneType 
 
 
 class MonitoringStation:
@@ -42,13 +42,13 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
     
-    def typical_range_consistent(self):
+    def typical_range_consistent(self): #1F
         if self.typical_range == None:
             return False
         else:
             return (self.typical_range[0] < self.typical_range[1]) #returns True if lowest level (index 0) is actually lower of the two
 
-    def relative_water_level(self): 
+    def relative_water_level(self): #2B
         '''Returns fraction from 0 to 1 of value. Does this by dividing the 
         difference of the latest value and the typical lowest value, by the range.
         If the typical range data is inconsistent, returns None '''
@@ -61,7 +61,7 @@ class MonitoringStation:
             return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
 
 
-def inconsistent_typical_range_stations(stations):
+def inconsistent_typical_range_stations(stations): #1F
     '''returns a list (MonitoringStation objects) of 
     stations with inconsistent typical range data'''
     

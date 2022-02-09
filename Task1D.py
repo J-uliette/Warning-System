@@ -5,7 +5,7 @@ from floodsystem.utils import names_from_MonitoringStation as nameGet
 
 stations = build_station_list()
 
-rivers = sorted(rivers_with_station(stations))
+rivers = rivers_with_station(stations)
 
 river_dict = stations_by_river(stations)
 
@@ -15,4 +15,3 @@ print (str(len(rivers)) + ' rivers have at least one monitoring station. First 1
 print(nameGet(river_dict['River Aire']))
 print(nameGet(river_dict['River Cam']))
 print(nameGet(river_dict['River Thames']))
-
