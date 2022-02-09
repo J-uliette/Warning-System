@@ -22,7 +22,7 @@ def stations_by_distance(stations, p): #1B
             towns.append(item.town)
         finaldistancelist = list(zip(names, towns, distance))
         finaldistancelist.sort(key=lambda x:x[2])
-        return finaldistancelist[:10], finaldistancelist[-10:]
+        return finaldistancelist
 
 def stations_within_radius(stations, centre, r): #1C
     '''Returns a list (unsorted) of all stations within a radius
@@ -72,23 +72,20 @@ def rivers_by_station_number(stations, N): #1E
     "It should return a list of (river name, number of stations) tuples, sorted "
     "by the number of stations. In the case that there are more rivers with the "
     "same number of stations as the N th entry, include these rivers in the list. "
-    rivers = rivers_with_station(stations) #gets a list of rivers to find stations on
-    counter = 0 #set counter to zero
-    listrivernumber = [] #create empty list for river name and number of stations
-    for i in rivers: #interate for each river
-        for station in stations: #and for each river, interate for each station
-            if station.river == rivers[i]: #if river is the same as the selected river for that river iteration
-                counter += 1 #increase counter
-        tupleunit = (rivers[i], counter) #create tuple
-        listrivernumber.append(tupleunit) #append tuple
-        tupleunit () #empty tuple
+    rivers = rivers_with_station(stations)
+    riverslist = [] #empty river list
+    listrivernumber = [] #create final empty list for river name and number of stations
+    for x in stations:
+        riverslist.append(x.river) #get river list with repetition
+    for y in rivers:
+        occurence = riverslist.count(y) #count number of times each river comes up
+        tuples = (y, occurence)
+        listrivernumber.append(tuples) #create list
     listrivernumber.sort(key=lambda x:x[1]) #sort by second elemnt of tuple
-    endlist = []
-    endlist.append(listrivernumber[len(listrivernumber)-N:]) #append to list last N elements
-    for i in listrivernumber:#interate over all elements of lsit
-        if listrivernumber[-N] == listrivernumber[i]: #if that listriver number is the same as the smallest N
-            endlist.insert(listrivernumber[i]) #insert to list
-    endlist.pop(listrivernumber[-N]) #remove repetition
+    endlist = listrivernumber [-N:]
+    for i in range(1,900):
+        if listrivernumber[-N-i][1] == listrivernumber[-N][1]:
+            endlist.insert(0,listrivernumber[-N-i])
     return endlist
 
 
