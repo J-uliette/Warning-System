@@ -21,4 +21,26 @@ def test_stations_by_river():
     dictionary = geo.stations_by_river(stations)
     assert type(dictionary) == dict
     assert 'River Cam' in dictionary
+
+def test_stations_by_distance():
+    stations = build_station_list()
+
+    p = (51.47, -0.609)
+    sorted_stations = geo.stations_by_distance(stations, p)
+    assert len(stations) == len(sorted_stations)
+    for i in range(len(stations) - 1):
+       assert sorted_stations[i][1] <= sorted_stations[i + 1][1]
+def test_rivers_by_station_number():
+    #Build list of stations
+    stations = build_station_list()
+    N = 5
+    
+    #Get results of rivers
+    rivers_station_number = geo.rivers_by_station_number(stations, N)
+    assert len(rivers_station_number) >= N
+    N = 9
+    
+    #Get results of rivers
+    rivers_station_number = geo.rivers_by_station_number(stations, N)
+    assert len(rivers_station_number) >= N
     
