@@ -62,3 +62,36 @@ def test_inconsistent_typical_range_stations():
     assert inconsistentStation in inconsistent_typical_range_stations(stations)
     assert inconsistentNoneStation in inconsistent_typical_range_stations(stations)
     assert consistentStation not in inconsistent_typical_range_stations(stations)
+
+def test_relative_water_level():
+
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    inconsistentRange = (2.3, -3.4445)
+    NoneRange = None
+    consistentRange = (-0.5, 1.5)
+    river = "River X"
+    town = "My Town"
+    inconsistentStation =  MonitoringStation(s_id, m_id, label, coord, inconsistentRange, river, town)
+    NoneStation =  MonitoringStation(s_id, m_id, label, coord, NoneRange, river, town)
+    consistentStation =  MonitoringStation(s_id, m_id, label, coord, consistentRange, river, town)
+
+    assert inconsistentStation.relative_water_level() == None
+    assert NoneStation.relative_water_level() == None
+
+    consistentStation.latest_level = 1
+    assert consistentStation.relative_water_level() == 0.75
+
+    consistentStation.latest_level = -0.5
+    assert consistentStation.relative_water_level() == 0
+
+    consistentStation.latest_level = 1.5
+    assert consistentStation.relative_water_level() == 1
+
+    consistentStation.latest_level = -1
+    assert consistentStation.relative_water_level() == -0.25
+
+    consistentStation.latest_level = 2
+    assert consistentStation.relative_water_level() == 1.25
