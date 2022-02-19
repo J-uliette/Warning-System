@@ -15,7 +15,7 @@ def test_stations_level_over():
 
     inconsistentStation =  MonitoringStation(s_id, m_id, label, coord, inconsistentRange, river, town)
     NoneStation =  MonitoringStation(s_id, m_id, label, coord, NoneRange, river, town)
-    assert flood.stations_level_over_threshold([inconsistentStation, NoneStation], 0.5) == None
+    assert flood.stations_level_over_threshold([inconsistentStation, NoneStation], 0.5) == []
 
     Station1 =  MonitoringStation(s_id, m_id, label, coord, (0, 1), river, town)
     Station2 =  MonitoringStation(s_id, m_id, label, coord, (0.5, 1), river, town)
@@ -27,6 +27,6 @@ def test_stations_level_over():
     assert flood.stations_level_over_threshold([Station1, Station2, Station3], -1000) == [(Station3, Station3.relative_water_level()), (Station1, Station1.relative_water_level()), (Station2, Station2.relative_water_level())]
     assert flood.stations_level_over_threshold([Station3, Station2, Station1], 0) == [(Station3, Station3.relative_water_level()), (Station1, Station1.relative_water_level())]
     assert flood.stations_level_over_threshold([Station2, Station1, Station3], 0.21) == [(Station3, Station3.relative_water_level())]
-    assert flood.stations_level_over_threshold([Station1, Station3, Station2], 1) == None
+    assert flood.stations_level_over_threshold([Station1, Station3, Station2], 1) == []
 
 
