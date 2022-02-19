@@ -11,7 +11,7 @@ def stations_level_over_threshold(stations, tol): #2B
     stations_over = []
 
     for station in stations: #iterating across all stations
-        if station.typical_range_consistent() == True:
+        if (type(station.latest_level) == float)  and (station.typical_range_consistent() == True):
             if station.relative_water_level() > tol:
                 stations_over.append((station, station.relative_water_level()))
     
