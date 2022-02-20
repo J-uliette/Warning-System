@@ -19,4 +19,21 @@ def stations_level_over_threshold(stations, tol): #2B
     sorted_stations = sorted_by_key(stations_over, 1, True) #sorts by relative water level in descending order
 
     return (sorted_stations)
+
+
+def stations_highest_rel_level(stations, N):
+    '''returns a list of the N stations (objects) 
+    at which the water level, relative to the typical 
+    range, is highest. The list is sorted in 
+    descending order by relative level.'''
             
+    stations_over = stations_level_over_threshold(stations, -1000)
+
+    highest_stations = stations_over[:N]
+    if stations_over[N][1] == stations_over[N+1][1]: #if two relative values are the same (unlikely)
+        highest_stations.append(stations_over[N+1]) #appends the other value
+
+    sorted_stations = sorted_by_key(highest_stations, 1, True)
+    #unnecessary as long as the stations_level_over_threshold works as it should
+    
+    return sorted_stations

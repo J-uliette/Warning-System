@@ -1,5 +1,7 @@
 import floodsystem.flood as flood
 from floodsystem.station import MonitoringStation
+from floodsystem.utils import sorted_by_key
+from floodsystem.stationdata import build_station_list, update_water_levels
 
 
 def test_stations_level_over():
@@ -28,5 +30,41 @@ def test_stations_level_over():
     assert flood.stations_level_over_threshold([Station3, Station2, Station1], 0) == [(Station3, Station3.relative_water_level()), (Station1, Station1.relative_water_level())]
     assert flood.stations_level_over_threshold([Station2, Station1, Station3], 0.21) == [(Station3, Station3.relative_water_level())]
     assert flood.stations_level_over_threshold([Station1, Station3, Station2], 1) == []
+
+
+
+def test_stations_highest_rel_level():
+    
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    #inconsistentRange = (2.3, -3.4445)
+    #NoneRange = None
+    #consistentRange = (-0.5, 1.5)
+    river = "River X"
+    town = "My Town"
+    
+    
+    Station1 =  MonitoringStation(s_id, m_id, label, coord, (0, 1), river, town)
+    Station2 =  MonitoringStation(s_id, m_id, label, coord, (0.5, 1), river, town)
+    Station3 =  MonitoringStation(s_id, m_id, label, coord, (-2, 1.5), river, town)
+    
+    Station1.latest_level = 0.2
+    Station2.latest_level = 0.2
+    Station3.latest_level = 0.2
+
+    stations = [Station1, Station2, Station3]
+
+    
+
+    assert len(flood.stations_highest_rel_level(stations, 1)) == 1
+    assert len(flood.stations_highest_rel_level(stations, 2)) == 2
+    
+    assert flood.stations_highest_rel_level(stations, 3) == sorted_by_key(flood.stations_highest_rel_level(stations, 3), 1, True)
+
+    Station2 =  MonitoringStation(s_id, m_id, label, coord, (0, 1), river, town)
+
+    assert len(flood.stations_highest_rel_level(stations, 2)) == 3
 
 
