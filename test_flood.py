@@ -49,22 +49,19 @@ def test_stations_highest_rel_level():
     Station1 =  MonitoringStation(s_id, m_id, label, coord, (0, 1), river, town)
     Station2 =  MonitoringStation(s_id, m_id, label, coord, (0.5, 1), river, town)
     Station3 =  MonitoringStation(s_id, m_id, label, coord, (-2, 1.5), river, town)
+    Station4 =  MonitoringStation(s_id, m_id, label, coord, (-1, 1.5), river, town)
     
     Station1.latest_level = 0.2
     Station2.latest_level = 0.2
     Station3.latest_level = 0.2
+    Station4.latest_level = 0.2
 
-    stations = [Station1, Station2, Station3]
+    stations = [Station1, Station2, Station3, Station4]
 
-    
 
     assert len(flood.stations_highest_rel_level(stations, 1)) == 1
     assert len(flood.stations_highest_rel_level(stations, 2)) == 2
     
     assert flood.stations_highest_rel_level(stations, 3) == sorted_by_key(flood.stations_highest_rel_level(stations, 3), 1, True)
-
-    Station2 =  MonitoringStation(s_id, m_id, label, coord, (0, 1), river, town)
-
-    assert len(flood.stations_highest_rel_level(stations, 2)) == 3
 
 

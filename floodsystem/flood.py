@@ -30,8 +30,6 @@ def stations_highest_rel_level(stations, N):
     stations_over = stations_level_over_threshold(stations, -1000)
 
     highest_stations = stations_over[:N]
-    if stations_over[N-1][1] == stations_over[N][1]: #if two relative values are the same (unlikely)
-        highest_stations.append(stations_over[N+1]) #appends the other value
 
     sorted_stations = sorted_by_key(highest_stations, 1, True)
     #unnecessary as long as the stations_level_over_threshold works as it should
