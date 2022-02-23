@@ -23,5 +23,5 @@ def polyfit(dates, levels, p):# Create set of 10 data points on interval (1000, 
     x1 = np.linspace(x[0], x[-1], 30)
     plt.plot(x1, poly(x1 - x[0]))
     # Display plot
-    #plt.show()
+    plt.show()
     return poly, d0
