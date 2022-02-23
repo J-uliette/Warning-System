@@ -1,12 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime, timedelta, date
 
 def polyfit(dates, levels, p):# Create set of 10 data points on interval (1000, 1002)
     x = dates
     y = levels
 
+    d0 = len(dates) 
     # Using shifted x values, find coefficient of best-fit
-    # polynomial f(x) of degree 4
+    # polynomial f(x) of degree p
     p_coeff = np.polyfit(x - x[0], y, p)
 
     # Convert coefficient into a polynomial that can be evaluated
@@ -20,6 +22,6 @@ def polyfit(dates, levels, p):# Create set of 10 data points on interval (1000, 
     # is evaluated using the shift x)
     x1 = np.linspace(x[0], x[-1], 30)
     plt.plot(x1, poly(x1 - x[0]))
-
     # Display plot
-    plt.show()
+    #plt.show()
+    return poly, d0
