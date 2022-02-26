@@ -6,9 +6,6 @@ for manipulating/modifying station data
 
 """
 
-'''what does below do? NoneType() isn't a function in types.py'''
-#from types import NoneType 
-
 
 class MonitoringStation:
     """This class represents a river level monitoring station"""
@@ -49,7 +46,8 @@ class MonitoringStation:
             return (self.typical_range[0] < self.typical_range[1]) #returns True if lowest level (index 0) is actually lower of the two
 
     def relative_water_level(self): #2B
-        '''Returns fraction from 0 to 1 of value. Does this by dividing the 
+        '''NEEDS UPDATED WATER LEVELS
+        Returns fraction from 0 to 1 of value. Does this by dividing the 
         difference of the latest value and the typical lowest value, by the range.
         If the typical range data is inconsistent, returns None '''
 
