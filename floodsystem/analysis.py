@@ -1,9 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.dates
 from datetime import datetime, timedelta, date
 
 def polyfit(dates, levels, p):# Create set of 10 data points on interval (1000, 1002)
-    x = dates
+    x = matplotlib.dates.date2num(dates)
     y = levels
 
     d0 = len(dates) 

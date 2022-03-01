@@ -53,7 +53,8 @@ class MonitoringStation:
 
         if self.typical_range_consistent() == False:
             return None
-        elif self.latest_level == None:  #IF THE WATER LEVELS HAVEN@T BEEN UPDATED THIS WILL ALWAYS BE NONE
+        elif self.latest_level == None:  #IF THE WATER LEVELS HAVEN'T BEEN UPDATED THIS WILL ALWAYS BE NONE
+            print('Update the water levels first maybe?')
             return None
         else:
             return (self.latest_level - self.typical_range[0]) / (self.typical_range[1] - self.typical_range[0])
