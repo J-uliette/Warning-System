@@ -38,3 +38,14 @@ def names_from_MonitoringStation(stations):
     names.append(station.name)
   
   return sorted(names)
+
+def towns_from_MonitoringStation(stations):
+  '''returns a sorted list of station towns where the parameter (stations)
+  is a list of MonitoringStation objects'''
+
+  towns = []
+
+  for station in stations:
+    towns.append(station.town)
+  
+  return sorted(towns)
